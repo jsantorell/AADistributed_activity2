@@ -7,18 +7,20 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.WelcomeService;
 
 /**
  *
  * @author jerem
  */
-@WebServlet(name = "PageGenerator", urlPatterns = {"/pager"})
-public class PageGenerator extends HttpServlet {
+@WebServlet(name = "WerlcomeServiceController", urlPatterns = {"/WerlcomeServiceController"})
+public class WerlcomeServiceController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,27 +34,21 @@ public class PageGenerator extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<link rel='stylesheet' href='css/style.css' type='text/css'/>");
-            out.println("<title>Whats Up</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>What Up:</h1>");
-            out.println("<p><a href='pager'>pager</a>  ||  ");
-            out.println("<a href='PageGenerator2.jsp'>pager2</a></p>");
-            out.println("<a href='nameForm.jsp'>Name Form</a></p>");
-            out.println("<table>");
-            out.println("<tr><td>C1R1</td><td>C2R1</td><td>C3R1</td></tr>");
-            out.println("<tr><td>C1R2</td><td>C2R2</td><td>C3R2</td></tr>");
-            out.println("<tr><td>C1R3</td><td>C2R3</td><td>C3R3</td></tr>");
-            out.println("</table>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+        String nameEntered = request.getParameter("userName");
+        
+        WelcomeService nms = new WelcomeService(); //Use mode file service to obtain properly formatted message.
+        
+        String message = nms.produceMessage(nameEntered);
+
+        request.setAttribute("nameMsg", message);
+        
+// To send any data to the VIEW you must use this to forward the
+// request object, which contains the data, to the destination. The
+// destination can be a JSP or another Controller, but cannot be an html page.
+        RequestDispatcher view
+                = request.getRequestDispatcher("/welcome.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

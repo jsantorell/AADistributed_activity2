@@ -15,5 +15,6 @@
         <h1>Hello World!</h1>
         <p><a href="pager">pager</a></p>
         <p><a href="PageGenerator2.jsp">pager2</a></p>
+        <p><a href="nameForm.jsp">Name Form</a></p>
     </body>
 </html>
