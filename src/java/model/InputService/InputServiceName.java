@@ -12,6 +12,7 @@ package model.InputService;
 public class InputServiceName implements InputService{
     
     
+    @Override
     public String getInput(String name){
     
     return name;
