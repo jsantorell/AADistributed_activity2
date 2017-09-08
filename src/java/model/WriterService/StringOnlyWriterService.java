@@ -5,8 +5,9 @@
  */
 package model.WriterService;
 
-import model.SalutationService.SalutationServiceWelcome;
+
 import model.InputService.InputService;
+import model.SalutationService.SalutationService;
 
 /**
  *
@@ -15,7 +16,7 @@ import model.InputService.InputService;
 public class StringOnlyWriterService implements WriterService{
 
     @Override
-    public String outputMessage(SalutationServiceWelcome w, InputService m, String name) {
+    public String outputMessage(SalutationService w, InputService m, String name) {
         return w.getGreeting() + " " + m.getInput(name);
     }
     
