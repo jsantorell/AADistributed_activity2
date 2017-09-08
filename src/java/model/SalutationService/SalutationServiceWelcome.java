@@ -6,6 +6,7 @@
 package model.SalutationService;
 
 import java.util.*;
+import model.DateService.DateService;
 
 /**
  *
@@ -13,13 +14,12 @@ import java.util.*;
  */
 public class SalutationServiceWelcome implements SalutationService{
 
+    private DateService ds = new DateService();
+    
     @Override
     public String getGreeting() {
 
-        Date date = new Date();
-        Calendar calendar = GregorianCalendar.getInstance();
-        calendar.setTime(date);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+            int hours = ds.getHours();
 
             //int hours = 10; // For Testing
 
