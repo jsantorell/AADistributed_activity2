@@ -13,7 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.WelcomeService;
+import model.WriterService.StringOnlyWriterService;
+import model.InputService.InputService;
+import model.InputService.InputServiceName;
+import model.SalutationService.SalutationServiceWelcome;
+import model.WriterService.WriterService;
 
 /**
  *
@@ -37,9 +41,11 @@ public class WerlcomeServiceController extends HttpServlet {
 
         String nameEntered = request.getParameter("userName");
         
-        WelcomeService nms = new WelcomeService(); //Use mode file service to obtain properly formatted message.
+        SalutationServiceWelcome nms = new SalutationServiceWelcome(); //Use mode file service to obtain properly formatted message.
+        WriterService write = new StringOnlyWriterService();
+        InputService nameInput = new InputServiceName();
         
-        String message = nms.produceMessage(nameEntered);
+        String message = write.outputMessage(nms, nameInput, nameEntered);
 
         request.setAttribute("nameMsg", message);
         

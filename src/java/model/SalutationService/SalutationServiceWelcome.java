@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.SalutationService;
 
 import java.util.*;
 
@@ -11,9 +11,10 @@ import java.util.*;
  *
  * @author jerem
  */
-public class WelcomeService {
+public class SalutationServiceWelcome implements SalutationService{
 
-    public String produceMessage(String name) {
+    @Override
+    public String getGreeting() {
 
         Date date = new Date();
         Calendar calendar = GregorianCalendar.getInstance();
@@ -32,7 +33,7 @@ public class WelcomeService {
             greeting = "Good Evening";
         }
 
-        return greeting + " " + name + " Welcome to Java web Development";
+        return greeting;
 
     }
 
