@@ -5,8 +5,9 @@
  */
 package model.WriterService;
 
-import model.SalutationService.SalutationServiceWelcome;
+
 import model.InputService.InputService;
+import model.SalutationService.SalutationService;
 
 /**
  *
@@ -14,7 +15,7 @@ import model.InputService.InputService;
  */
 public interface WriterService {
     
-        public abstract String outputMessage(SalutationServiceWelcome w, InputService m, String name);
+        public abstract String outputMessage(SalutationService w, InputService m, String name);
 
 
     

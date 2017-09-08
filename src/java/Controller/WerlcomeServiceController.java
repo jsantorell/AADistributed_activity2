@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.WriterService.StringOnlyWriterService;
 import model.InputService.InputService;
 import model.InputService.InputServiceName;
+import model.SalutationService.SalutationService;
 import model.SalutationService.SalutationServiceWelcome;
 import model.WriterService.WriterService;
 
@@ -41,7 +42,7 @@ public class WerlcomeServiceController extends HttpServlet {
 
         String nameEntered = request.getParameter("userName");
         
-        SalutationServiceWelcome nms = new SalutationServiceWelcome(); //Use mode file service to obtain properly formatted message.
+        SalutationService nms = new SalutationServiceWelcome(); //
         WriterService write = new StringOnlyWriterService();
         InputService nameInput = new InputServiceName();
         
